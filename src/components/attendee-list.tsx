@@ -26,7 +26,7 @@ export function AttendeeList() {
   const [page, setPage] = useState(1)
 
   const totalPage = Math.ceil(attendees.length / 10)
-
+  const totalAttendeesPerPage = page * 10 > attendees.length ? attendees.length - ((page - 1) * 10) : 10;
 
   function onSearchInputChange(event: ChangeEvent<HTMLInputElement>){
     setSearch(event.target.value)
@@ -121,7 +121,7 @@ export function AttendeeList() {
               className="py-3 px-4 text-sm font-semibold text-left"
               colSpan={3}
             >
-              Mostrando 10 de {attendees.length} itens
+              Mostrando {totalAttendeesPerPage} de {attendees.length} itens
             </TableCell>
             <TableCell
               className="py-3 px-4 text-sm font-semibold text-right"
